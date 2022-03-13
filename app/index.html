@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- MDB CSS -->
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css"
+        rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="wordle.css">
+
+    <title>Wordle Bot</title>
+</head>
+
+<body>
+    <style>
+        /* Karla font */
+        @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&display=swap');
+
+        body {
+            font-family: 
+                'Karla', 
+                'Roboto', 
+                sans-serif !important;
+        }
+    </style>
+
+    <div class="container">
+
+        <div class="display-4">Wordle Bot</div>
+
+        <hr>
+
+        
+        <div class="d-flex">
+            <p>Head-to-head</p>
+            <div class="form-check form-switch mx-2">
+                <input class="form-check-input" type="checkbox" role="switch" onclick="changeMode(this)"/>
+            </div>
+            <p>Challenge the bot</p>
+        </div>
+
+        <hr>
+
+        
+        
+        <div class="row justify-content-center">
+            
+            <div class="board" id=user>
+                
+                <div class="tile" id=tile_00 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_01 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_02 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_03 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_04 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_10 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_11 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_12 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_13 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_14 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_20 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_21 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_22 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_23 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_24 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_30 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_31 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_32 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_33 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_34 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_40 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_41 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_42 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_43 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_44 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_50 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_51 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_52 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_53 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_54 state=empty animation=none></div>
+                
+            </div>
+            
+            <div class="board" id=bot>
+                
+                <div class="tile" id=tile_00 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_01 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_02 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_03 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_04 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_10 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_11 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_12 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_13 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_14 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_20 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_21 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_22 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_23 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_24 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_30 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_31 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_32 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_33 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_34 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_40 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_41 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_42 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_43 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_44 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_50 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_51 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_52 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_53 state=empty animation=none></div>
+                
+                <div class="tile" id=tile_54 state=empty animation=none></div>
+                
+            </div>
+            
+        </div>
+
+        <div class="row">
+            <div id=wordInput class="hidden text-center">
+                <small>Enter a word and our bot will try to guess it.</small>
+                <div class="d-flex justify-content-center">
+                    <input 
+                        type=text
+                        class=form-control
+                        id=wordEntry placeholder=CRANE
+                        maxlength=5>
+                    <small 
+                        class="my-auto btn-primary" 
+                        style="margin-left: -65px;
+                               border-radius: 4px;
+                               height: 23px;
+                               width: 60px;
+                               cursor: pointer;"
+                        >Submit</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src=wordle.js></script>
+
+    <!-- Bootstrap script -->
+    <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"
+    ></script> 
+</body>
+</html>
