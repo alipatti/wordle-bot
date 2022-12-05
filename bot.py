@@ -22,7 +22,7 @@ CLASS_LOOKUP = {
 }
 
 # precomputed flips for all guess-answer pairs
-FLIPS = np.load("data/all_patterns.npy")
+FLIPS = np.load("data/wordle/all_patterns.npy")
 
 
 def update_mask(g, flip, mask) -> None:
@@ -128,5 +128,5 @@ def test(n=5, answers=None):
 if __name__=="__main__":
     # print(best_guess())
     # play_game(answer="rupee")
-    test()
+    test(30)
     print(play_game(return_json=True))
